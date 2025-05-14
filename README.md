@@ -9,7 +9,7 @@ Scrape 34ML.com → extract brand identity → draft posts → human approval �
 The 34ML Social-Media AI Agent automates content creation for LinkedIn and Instagram. A one-off scrape of `34ml.com` builds a FAISS vector knowledge base (MiniLM-L6-v2) for RAG-powered post generation. Brand tone, audience, and style are auto-extracted to `memory/brand.json`. The CLI generates posts (text via Gemini, images via DALL·E 3), enforces human-in-the-loop (HITL) approval, and prevents near-duplicate content using a similarity guard. Posts are stored in `memory/posts.json` and scheduled via `memory/schedule.json`. A LangGraph multi-agent orchestrator with checkpointing drives the workflow, running offline except for Gemini and OpenAI API calls.
 
 ---
-
+```
 ## 1 Feature Matrix
 
 | Phase | Feature                                                            | Status |
@@ -26,7 +26,7 @@ The 34ML Social-Media AI Agent automates content creation for LinkedIn and Insta
 | 10    | Final documentation + optional gradio UI                           | ✅     |
 
 ---
-
+```
 ## 2 Architecture (Phases 1–9)
 
 ```text
@@ -221,50 +221,7 @@ Ensures no duplicates, no scheduling conflicts, and full human approval.
 
 ---
 
-## 7 Tests
-
-```bash
-pytest  # Planned for Phase 11
-python test_scheduler.py  # Manual scheduler tests
-python test_graph.py  # Manual graph invoke test
-```
-
-**Manual Tests** (run in CLI):
-- `write instagram post about our new AI feature with image`: Verify image URL, PNG in `data/images/`, `posts.json` entry.
-- `show instagram posts`: Confirm `image_url` display.
-- `schedule last instagram post for next Friday`: Check `schedule.json`.
-- `show history`: Verify interaction persistence.
-- `write insta post`: Test channel alias.
-- `invalid command`: Test error handling.
-
----
-
-## 8 What's Next?
-
-### Phase 10 – Final Documentation & Optional Streamlit UI
-1. **Finalize Documentation**:
-   - Add architecture diagram (e.g., PNG from draw.io).
-   - Include sample `posts.json` and `schedule.json` in `README.md`.
-   - Document edge cases (e.g., DALL·E 3 content policy violations).
-2. **Streamlit UI (Optional)**:
-   - Build a two-pane interface: chat on left, post/image preview on right.
-   - Reuse LangGraph runner (`build_graph.py`) with `thread_id` as session ID.
-   - Install: `pip install streamlit`.
-   - Run: `streamlit run app_streamlit.py` (new file).
-3. **Requirements**:
-   - `streamlit==1.31.0` (if UI is implemented).
-   - Update `requirements.txt`.
-
-### Phase 11 – Polish & Demo
-- Add `Makefile` for common commands (e.g., `make test`, `make run`).
-- Set up CI (lint, pytest) via GitHub Actions.
-- Write unit tests for `generator.py`, `scheduler.py`, `image_agent.py`.
-- Create a 7-min screencast: scrape → generate post → approve → schedule → show queue → display image.
-- Publish demo to YouTube/Vimeo.
-
----
-
-## 9 Cost Management
+## 7 Cost Management
 
 - **DALL·E 3**: ~$0.04 per 1024x1024 standard-quality image.
 - **Gemini**: Free tier available (`console.cloud.google.com`).
@@ -276,26 +233,11 @@ python test_graph.py  # Manual graph invoke test
 
 ---
 
-## 10 Limitations & Ideas
-
-- **Limitations**:
-  - JSON persistence limits multi-user support.
-  - Date parsing is English-only (e.g., “next Friday”).
-  - No auto-publish API (queue is advisory).
-  - Streamlit UI not yet implemented.
-- **Ideas**:
-  - Migrate to SQLite/pgvector for scalability.
-  - Add multilingual date parsing.
-  - Integrate social media APIs for auto-posting.
-  - Enhance image prompts for custom styles (e.g., “neon tech aesthetic”).
-
----
-
-## 11 Installation
+## 8 Installation
 
 1. **Clone Repository**:
    ```bash
-   git clone https://github.com/your-username/social-media-ai-agent.git
+   git clone [https://github.com/your-username/social-media-ai-agent.git](https://github.com/Ahmd-atta/34ml-ai-agent)
    cd social-media-ai-agent
    ```
 
@@ -335,19 +277,13 @@ python test_graph.py  # Manual graph invoke test
 
 ---
 
-## 12 Contributing
+## 9 Contributing
 
 1. Fork the repository.
 2. Create a feature branch: `git checkout -b feature/YourFeature`.
 3. Commit changes: `git commit -m 'Add YourFeature'`.
 4. Push: `git push origin feature/YourFeature`.
 5. Open a pull request.
-
----
-
-## 13 License
-
-MIT License. See `LICENSE` for details.
 
 ---
 
