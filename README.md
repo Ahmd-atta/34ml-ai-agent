@@ -25,8 +25,9 @@ The 34ML Social-Media AI Agent automates content creation for LinkedIn and Insta
 | 9     | LangGraph multi-agent orchestrator + DALL·E 3 image generation     | ✅     |
 | 10    | Final documentation + optional gradio UI                           | ✅     |
 
----
 ```
+---
+
 ## 2 Architecture (Phases 1–9)
 
 ```text
@@ -287,7 +288,7 @@ Ensures no duplicates, no scheduling conflicts, and full human approval.
 
 ---
 
-## 14 Contact
+## 10 Contact
 
 For questions, contact the 34ML team at `support@34ml.com`.
 
